@@ -8,7 +8,7 @@ Para validar el funcionamiento del autómata, se toman como caso de estudio los 
 
 ## 2. Fundamento teórico
 
-### 2.1 Definición del Automata
+### 2.1 Definición del automata
 
 Un **AFD** es un modelo matemático de computación que reconoce lenguajes regulares. Formalmente, un AFD se define como una **quíntupla**:
 
@@ -23,12 +23,12 @@ Donde:
 
 ```
                   ┌───────────────────────────────┐
-                  │    Entrada: Símbolo (a ∈ Σ)   │
+                  │    Entrada: símbolo (a ∈ Σ)   │
                   └───────────────┬───────────────┘
                                   │
                                   ▼
 ┌──────────────────┐      ┌───────────────┐      ┌──────────────────┐
-│  Estado Actual   ├─────►│   Función f   ├─────►│ Estado Siguiente │
+│  Estado actual   ├─────►│   Función f   ├─────►│ Estado siguiente │
 │     (q ∈ Q)      │      │ (Q x Σ ──► Q) │      │     (q' ∈ Q)     │
 └──────────────────┘      └───────────────┘      └──────────────────┘
 ```
@@ -36,7 +36,8 @@ Donde:
 ### 2.2 Determinismo vs. No determinismo (AFD vs. AFND)
 En un autómata determinista (**AFD**), para un estado $q$ y un símbolo $a$, existe **exactamente una única transición** $f(q, a) = q'$. No existen ambigüedades ni transiciones vacías ($\epsilon$). En contraste, un autómata no determinista (**AFND**) puede tener múltiples caminos posibles o transiciones $\epsilon$. 
 
-El **Algoritmo de Thompson** (mencionado como Algoritmo 3.3 en la literatura de Aho) permite construir un AFND a partir de una expresión regular, el cual posteriormente se convierte a un **AFD equivalente** mediante la *Construcción de Subconjuntos*.
+El **Algoritmo de Thompson** (mencionado como Algoritmo 3.3 en la literatura de Aho) permite construir un AFND a partir de una expresión regular, el cual posteriormente se convierte a un **AFD equivalente** mediante la
+construcción de subconjuntos.
 
 ---
 
@@ -103,7 +104,7 @@ q3, a -> q3
 q3, b -> q3
 ```
 
-### 4.2 Formato del Archivo `cadenas.txt`
+### 4.2 Formato del archivo `cadenas.txt`
 
 Cada línea no vacía representa una cadena a ser evaluada por el autómata. Las líneas que inician con `#` son ignoradas.
 
@@ -123,17 +124,17 @@ ababbx
 
 ---
 
-## 5. Resultados de la Evaluación (Caso de Estudio `ababbab`)
+## 5. Resultados de la evaluación (Caso de Estudio `ababbab`)
 
 Al ejecutar el autómata con el comando `python AFD.py conf.txt cadenas.txt`, se obtiene la evaluación detallada:
 
-### Traza de Movimientos de la Cadena Requerida `ababbab`:
+### Movimientos de la cadena requerida `ababbab`:
 
 $$q_0 \xrightarrow{a} q_1 \xrightarrow{b} q_2 \xrightarrow{a} q_1 \xrightarrow{b} q_2 \xrightarrow{b} q_3 \xrightarrow{a} q_3 \xrightarrow{b} q_3 \quad (\text{Resultado: ACEPTADA } [✓])$$
 
-### Tabla de Resultados Generales:
+### Tabla de resultados:
 
-| # | Cadena | Subcadena `abb` Presente? | Estado Final Alcanzado | Verdicho |
+| # | Cadena | Subcadena `abb` presente? | Estado final alcanzado | Aceptada o rechazada |
 |---|--------|---------------------------|------------------------|----------|
 | 1 | `ababbab` | **Sí** | $q_3 \in F$ | **ACEPTADA [✓]** |
 | 2 | `abb` | **Sí** | $q_3 \in F$ | **ACEPTADA [✓]** |
@@ -149,30 +150,30 @@ $$q_0 \xrightarrow{a} q_1 \xrightarrow{b} q_2 \xrightarrow{a} q_1 \xrightarrow{b
 
 ---
 
-## 6. Gráficas y Diagramas Visuales
+## 6. Gráficas
 
-### 6.1 Diagrama de Transición de Estados ($A = (Q, \Sigma, f, q_0, F)$)
+### 6.1 Diagrama de transición de estados ($A = (Q, \Sigma, f, q_0, F)$)
 
 ![Diagrama de Estados AFD](diagrama_afd_ejercicio3_16d.png)
-* **Explicación del Diagrama de Estados**:
+* **Explicación del diagrama de estados**:
   * **Estado inicial ($q_0$)**: Representa el estado base antes de detectar el inicio del patrón `abb`. Permanece en $q_0$ mientras lea símbolos `'b'`.
   * **Avance en la secuencia ($q_0 \to q_1 \to q_2 \to q_3$)**: Al leer `'a'`, avanza a $q_1$ (se ha detectado `'a'`). Al leer la primera `'b'`, avanza a $q_2$ (se ha detectado `'ab'`). Al leer la segunda `'b'`, transiciona al estado final $q_3$ (se ha completado `'abb'`).
   * **Manejo de retrocesos ($q_2 \to q_1$)**: Si estando en $q_2$ (tras haber leído `'ab'`) el siguiente carácter es `'a'`, el autómata retrocede a $q_1$ porque esa nueva `'a'` puede ser el inicio de una nueva ocurrencia de `abb`.
   * **Estado de aceptación permanente ($q_3$)**: Destacado en verde con doble anillo. Una vez alcanzado $q_3$, cualquier símbolo posterior (`a` o `b`) mantiene al autómata en $q_3$ (bucle de aceptación), asegurando que cualquier cadena que contenga `abb` en cualquier posición sea aceptada.
 ---
 
-### 6.2 Gráfica de Distribución de Resultados
+### 6.2 Gráfica de distribución de resultados
 
 ![Gráfica de Resultados](resultados_ejercicio3_16.png)
 * **Explicación de la Gráfica de Resultados**:
-  * **Cadenas Aceptadas (45.5% / 5 cadenas)**: Representa las cadenas que contienen la subcadena `abb` (incluyendo la cadena principal `ababbab` del Ejercicio 3.16 de Aho).
-  * **Cadenas Rechazadas (45.5% / 5 cadenas)**: Corresponde a las cadenas válidas sobre el alfabeto $\{a, b\}$ que finalizan en estados no aceptadores ($q_0, q_1, q_2$) por no incluir `abb`.
-  * **Error de Alfabeto (9.1% / 1 cadena)**: Muestra el caso de control donde la cadena contiene un símbolo fuera de $\Sigma$ (ejemplo: `'x'`), validando la tolerancia a fallos del programa.
+  * **Cadenas aceptadas (45.5% / 5 cadenas)**: Representa las cadenas que contienen la subcadena `abb` (incluyendo la cadena principal `ababbab` del Ejercicio 3.16 de Aho).
+  * **Cadenas rechazadas (45.5% / 5 cadenas)**: Corresponde a las cadenas válidas sobre el alfabeto $\{a, b\}$ que finalizan en estados no aceptadores ($q_0, q_1, q_2$) por no incluir `abb`.
+  * **Error de alfabeto (9.1% / 1 cadena)**: Muestra el caso de control donde la cadena contiene un símbolo fuera de $\Sigma$ (ejemplo: `'x'`), validando la tolerancia a fallos del programa.
 ---
 
-## 7. Guía de Ejecución Paso a Paso
+## 7. Guía de ejecución
 
-### 7.1 Requisitos Previos
+### 7.1 Requisitos previos
 
 Asegúrate de contar con Python 3 instalado en tu sistema:
 ```bash
@@ -188,7 +189,7 @@ pip install matplotlib networkx
 
 ### 7.2 Ejecución en Windows (PowerShell / CMD)
 
-1. Abre la consola de **PowerShell** o **Símbolo del sistema (CMD)**.
+1. Abre la consola de **PowerShell** o **símbolo del sistema (CMD)**.
 2. Navega hasta la carpeta del proyecto:
    ```powershell
    cd C:\Ruta\A\Tu\Carpeta\AFD-Python
@@ -203,7 +204,7 @@ pip install matplotlib networkx
    ```
 5. Para regenerar los diagramas y gráficas visuales:
    ```powershell
-   python generate_diagrams.py
+   python generarDiagramas.py
    ```
 
 ---
@@ -217,7 +218,7 @@ pip install matplotlib networkx
    ```
 3. Asegura permisos de ejecución (opcional):
    ```bash
-   chmod +x AFD.py generate_diagrams.py
+   chmod +x AFD.py generarDiagramas.py
    ```
 4. Ejecuta el simulador con Python 3:
    ```bash
@@ -238,4 +239,4 @@ pip install matplotlib networkx
 
 ## 8. Conclusión
 
-El simulador desarrollado en Python demuestra cómo la representación formal de un **Autómata Finito Determinista mediante su quíntupla $A = (Q, \Sigma, f, q_0, F)$** se traduce eficientemente en estructuras de datos de código (conjuntos y diccionarios). La solución permite analizar patrones lingüísticos de forma determinista en tiempo $O(n)$, siendo $n$ la longitud de la cadena de entrada, garantizando un recorrido sin ambigüedades.
+El simulador desarrollado en Python demuestra cómo la representación formal de un **AFD mediante su quíntupla $A = (Q, \Sigma, f, q_0, F)$** se traduce eficientemente en estructuras de datos de código (conjuntos y diccionarios). La solución permite analizar patrones lingüísticos de forma determinista en tiempo $O(n)$, siendo $n$ la longitud de la cadena de entrada, garantizando un recorrido sin ambigüedades.
