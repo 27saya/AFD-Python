@@ -1,4 +1,4 @@
-# Autómata para Ejercicio 3.16 c): ((ε|a)b*)*
+# Autómata c): ((ε|a)b*)*
 Q: q0
 SIGMA: a, b
 Q0: q0
