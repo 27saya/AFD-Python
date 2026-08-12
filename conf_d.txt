@@ -1,4 +1,4 @@
-# Autómata para Ejercicio 3.16 d): (a|b)*abb(a|b)*
+# Autómata d): (a|b)*abb(a|b)*
 Q: q0, q1, q2, q3
 SIGMA: a, b
 Q0: q0
