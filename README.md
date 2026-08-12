@@ -1,15 +1,8 @@
-# Autómata Finito Determinista (AFD) en Python
-**Implementación, Simulación y Análisis Basado en el Ejercicio 3.16 del Libro de Aho**
-
-*Trabajo Práctico para la Asignatura de Teoría de la Computación / Compiladores (5to Semestre Universitario)*
-
----
-
 ## 1. Introducción
 
-El presente proyecto consiste en el desarrollo e implementación de un simulador genérico de **Autómatas Finitos Deterministas (AFD)** escrito en Python (`AFD.py`). El simulador permite configurar cualquier autómata mediante un archivo de texto de configuración (`conf.txt`) y evaluar secuencialmente un conjunto de cadenas de entrada provistas en `cadenas.txt`.
+La tarea consiste en el desarrollo e implementación de un simulador genérico de **Autómatas Finitos Deterministas (AFD)** escrito en Python (`AFD.py`). El simulador permite configurar cualquier autómata mediante un archivo de texto de configuración (`conf.txt`) y evaluar secuencialmente un conjunto de cadenas de entrada provistas en `cadenas.txt`.
 
-Para validar el funcionamiento del autómata, se toman como caso de estudio los modelos formales descritos en el **Ejercicio 3.16 (Página 149)** del libro clásico de referencia: *Compiladores: Principios, Técnicas y Herramientas* de Alfred V. Aho, Sethi y Ullman. El programa determina si cada cadena pertenece al lenguaje formal aceptado por el autómata y genera la secuencia completa de movimiento (traza de estados).
+Para validar el funcionamiento del autómata, se toman como caso de estudio los modelos del **ejercicio 3.16 (página 149)** del libro *Compiladores: Principios, Técnicas y Herramientas* de Alfred V. Aho, Sethi y Ullman. El programa determina si cada cadena pertenece al lenguaje formal aceptado por el autómata y genera la secuencia completa de movimiento (traza de estados).
 
 ---
 
@@ -47,9 +40,9 @@ El **Algoritmo de Thompson** (mencionado como Algoritmo 3.3 en la literatura de 
 
 ---
 
-## 3. Análisis del Ejercicio 3.16 (Libro de Aho, Pág. 149)
+## 3. Análisis del ejercicio
 
-El Ejercicio 3.16 solicita construir autómatas y mostrar la secuencia de movimientos al procesar la cadena de entrada **`ababbab`** para las siguientes expresiones regulares:
+El ejercicio solicita construir autómatas y mostrar la secuencia de movimientos al procesar la cadena de entrada **`ababbab`** para las siguientes expresiones regulares:
 
 1. **Inciso a)**: $(a \mid b)^*$
    * **Descripción**: Acepta cualquier combinación de $a$ y $b$, incluyendo la cadena vacía $\epsilon$. Es el lenguaje universal sobre $\Sigma = \{a, b\}$.
@@ -60,7 +53,7 @@ El Ejercicio 3.16 solicita construir autómatas y mostrar la secuencia de movimi
 4. **Inciso d)**: $(a \mid b)^* a b b (a \mid b)^*$
    * **Descripción**: Es el autómata de patrón estructurado. Acepta todas las cadenas sobre $\{a, b\}$ que contienen la subcadena continua **`abb`**.
 
-### Autómata Determinista para el Inciso d) $(a \mid b)^* a b b (a \mid b)^*$
+### Autómata determinista para el inciso d) $(a \mid b)^* a b b (a \mid b)^*$
 
 Para detectar la subcadena `abb`, el autómata requiere 4 estados con las siguientes funciones de memoria:
 * **$q_0$**: Estado inicial. No se ha detectado ningún prefijo de `abb`.
@@ -81,31 +74,9 @@ Para detectar la subcadena `abb`, el autómata requiere 4 estados con las siguie
 
 ---
 
-## 4. Estructura del Proyecto
+## 4. Formato de Archivos de Configuración y Cadenas
 
-El repositorio está organizado con los siguientes archivos:
-
-```text
-AFD-Python/
-│
-├── AFD.py                           # Simulador principal del Autómata (Python 3)
-├── conf.txt                         # Configuración del autómata d) (por defecto)
-├── conf_a.txt                       # Configuración para inciso a) (a|b)*
-├── conf_b.txt                       # Configuración para inciso b) (a*|b*)*
-├── conf_c.txt                       # Configuración para inciso c) ((ε|a)b*)*
-├── conf_d.txt                       # Configuración para inciso d) (a|b)*abb(a|b)*
-├── cadenas.txt                      # Cadenas de prueba (incluye 'ababbab')
-├── generate_diagrams.py             # Script auxiliar para generar gráficas PNG
-├── diagrama_afd_ejercicio3_16d.png  # Diagrama de estados generado
-├── resultados_ejercicio3_16.png     # Gráfica estadística de evaluación
-└── README.md                        # Documentación detallada del proyecto
-```
-
----
-
-## 5. Formato de Archivos de Configuración y Cadenas
-
-### 5.1 Formato del Archivo `conf.txt`
+### 4.1 Formato del Archivo `conf.txt`
 
 El archivo de configuración refleja de forma transparente la quíntupla formal $A = (Q, \Sigma, f, q_0, F)$:
 
@@ -134,7 +105,7 @@ q3, a -> q3
 q3, b -> q3
 ```
 
-### 5.2 Formato del Archivo `cadenas.txt`
+### 4.2 Formato del Archivo `cadenas.txt`
 
 Cada línea no vacía representa una cadena a ser evaluada por el autómata. Las líneas que inician con `#` son ignoradas.
 
@@ -154,7 +125,7 @@ ababbx
 
 ---
 
-## 6. Resultados de la Evaluación (Caso de Estudio `ababbab`)
+## 5. Resultados de la Evaluación (Caso de Estudio `ababbab`)
 
 Al ejecutar el autómata con el comando `python AFD.py conf.txt cadenas.txt`, se obtiene la evaluación detallada:
 
@@ -180,21 +151,31 @@ $$q_0 \xrightarrow{a} q_1 \xrightarrow{b} q_2 \xrightarrow{a} q_1 \xrightarrow{b
 
 ---
 
-## 7. Gráficas y Diagramas Visuales
+## 6. Gráficas y Diagramas Visuales
 
-### 7.1 Diagrama de Transición de Estados ($A = (Q, \Sigma, f, q_0, F)$)
+### 6.1 Diagrama de Transición de Estados ($A = (Q, \Sigma, f, q_0, F)$)
 
 ![Diagrama de Estados AFD](diagrama_afd_ejercicio3_16d.png)
-
-### 7.2 Gráfica de Distribución de Resultados
-
-![Gráfica de Resultados](resultados_ejercicio3_16.png)
-
+* **Explicación del Diagrama de Estados**:
+  * **Estado inicial ($q_0$)**: Representa el estado base antes de detectar el inicio del patrón `abb`. Permanece en $q_0$ mientras lea símbolos `'b'`.
+  * **Avance en la secuencia ($q_0 \to q_1 \to q_2 \to q_3$)**: Al leer `'a'`, avanza a $q_1$ (se ha detectado `'a'`). Al leer la primera `'b'`, avanza a $q_2$ (se ha detectado `'ab'`). Al leer la segunda `'b'`, transiciona al estado final $q_3$ (se ha completado `'abb'`).
+  * **Manejo de retrocesos ($q_2 \to q_1$)**: Si estando en $q_2$ (tras haber leído `'ab'`) el siguiente carácter es `'a'`, el autómata retrocede a $q_1$ porque esa nueva `'a'` puede ser el inicio de una nueva ocurrencia de `abb`.
+  * **Estado de aceptación permanente ($q_3$)**: Destacado en verde con doble anillo. Una vez alcanzado $q_3$, cualquier símbolo posterior (`a` o `b`) mantiene al autómata en $q_3$ (bucle de aceptación), asegurando que cualquier cadena que contenga `abb` en cualquier posición sea aceptada.
 ---
 
-## 8. Guía de Ejecución Paso a Paso
+### 6.2 Gráfica de Distribución de Resultados
 
-### 8.1 Requisitos Previos
+![Gráfica de Resultados](resultados_ejercicio3_16.png)
+* **Explicación de la Gráfica de Resultados**:
+  * **Visualización Dual**: La gráfica combina un diagrama de barras (izquierda) y un gráfico de dona (derecha) para sintetizar el desempeño del simulador sobre el conjunto de cadenas de prueba (`cadenas.txt`).
+  * **Cadenas Aceptadas (45.5% / 5 cadenas)**: Representa las cadenas que contienen la subcadena `abb` (incluyendo la cadena principal `ababbab` del Ejercicio 3.16 de Aho).
+  * **Cadenas Rechazadas (45.5% / 5 cadenas)**: Corresponde a las cadenas válidas sobre el alfabeto $\{a, b\}$ que finalizan en estados no aceptadores ($q_0, q_1, q_2$) por no incluir `abb`.
+  * **Error de Alfabeto (9.1% / 1 cadena)**: Muestra el caso de control donde la cadena contiene un símbolo fuera de $\Sigma$ (ejemplo: `'x'`), validando la tolerancia a fallos del programa.
+---
+
+## 7. Guía de Ejecución Paso a Paso
+
+### 7.1 Requisitos Previos
 
 Asegúrate de contar con Python 3 instalado en tu sistema:
 ```bash
@@ -208,7 +189,7 @@ pip install matplotlib networkx
 
 ---
 
-### 8.2 Ejecución en Windows (PowerShell / CMD)
+### 7.2 Ejecución en Windows (PowerShell / CMD)
 
 1. Abre la consola de **PowerShell** o **Símbolo del sistema (CMD)**.
 2. Navega hasta la carpeta del proyecto:
@@ -230,7 +211,7 @@ pip install matplotlib networkx
 
 ---
 
-### 8.3 Ejecución en Linux / macOS (Terminal Bash/Zsh)
+### 7.3 Ejecución en Linux / macOS (Terminal Bash/Zsh)
 
 1. Abre tu terminal.
 2. Clona o navega hasta el directorio del proyecto:
@@ -258,6 +239,6 @@ pip install matplotlib networkx
 
 ---
 
-## 9. Conclusión
+## 8. Conclusión
 
 El simulador desarrollado en Python demuestra cómo la representación formal de un **Autómata Finito Determinista mediante su quíntupla $A = (Q, \Sigma, f, q_0, F)$** se traduce eficientemente en estructuras de datos de código (conjuntos y diccionarios). La solución permite analizar patrones lingüísticos de forma determinista en tiempo $O(n)$, siendo $n$ la longitud de la cadena de entrada, garantizando un recorrido sin ambigüedades.
