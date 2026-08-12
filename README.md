@@ -6,11 +6,11 @@ Para validar el funcionamiento del autómata, se toman como caso de estudio los 
 
 ---
 
-## 2. Fundamento Teórico
+## 2. Fundamento teórico
 
-### 2.1 Definición Formal del Autómata Finito Determinista (AFD)
+### 2.1 Definición del Automata
 
-Un **Autómata Finito Determinista** es un modelo matemático de computación que reconoce lenguajes regulares. Formalmente, un AFD se define como una **quíntupla**:
+Un **AFD** es un modelo matemático de computación que reconoce lenguajes regulares. Formalmente, un AFD se define como una **quíntupla**:
 
 $$A = (Q, \Sigma, f, q_0, F)$$
 
@@ -33,7 +33,7 @@ Donde:
 └──────────────────┘      └───────────────┘      └──────────────────┘
 ```
 
-### 2.2 Determinismo vs. No Determinismo (AFD vs. AFND)
+### 2.2 Determinismo vs. No determinismo (AFD vs. AFND)
 En un autómata determinista (**AFD**), para un estado $q$ y un símbolo $a$, existe **exactamente una única transición** $f(q, a) = q'$. No existen ambigüedades ni transiciones vacías ($\epsilon$). En contraste, un autómata no determinista (**AFND**) puede tener múltiples caminos posibles o transiciones $\epsilon$. 
 
 El **Algoritmo de Thompson** (mencionado como Algoritmo 3.3 en la literatura de Aho) permite construir un AFND a partir de una expresión regular, el cual posteriormente se convierte a un **AFD equivalente** mediante la *Construcción de Subconjuntos*.
@@ -44,13 +44,13 @@ El **Algoritmo de Thompson** (mencionado como Algoritmo 3.3 en la literatura de 
 
 El ejercicio solicita construir autómatas y mostrar la secuencia de movimientos al procesar la cadena de entrada **`ababbab`** para las siguientes expresiones regulares:
 
-1. **Inciso a)**: $(a \mid b)^*$
+1. **a)**: $(a \mid b)^*$
    * **Descripción**: Acepta cualquier combinación de $a$ y $b$, incluyendo la cadena vacía $\epsilon$. Es el lenguaje universal sobre $\Sigma = \{a, b\}$.
-2. **Inciso b)**: $(a^* \mid b^*)^*$
+2. **b)**: $(a^* \mid b^*)^*$
    * **Descripción**: Equivalente a la expresión del inciso a), acepta cualquier secuencia de $a$ y $b$.
-3. **Inciso c)**: $((\epsilon \mid a) b^*)^*$
+3. **c)**: $((\epsilon \mid a) b^*)^*$
    * **Descripción**: De igual forma, genera cualquier cadena sobre el alfabeto $\{a, b\}^*$.
-4. **Inciso d)**: $(a \mid b)^* a b b (a \mid b)^*$
+4. **d)**: $(a \mid b)^* a b b (a \mid b)^*$
    * **Descripción**: Es el autómata de patrón estructurado. Acepta todas las cadenas sobre $\{a, b\}$ que contienen la subcadena continua **`abb`**.
 
 ### Autómata determinista para el inciso d) $(a \mid b)^* a b b (a \mid b)^*$
@@ -77,8 +77,6 @@ Para detectar la subcadena `abb`, el autómata requiere 4 estados con las siguie
 ## 4. Formato de Archivos de Configuración y Cadenas
 
 ### 4.1 Formato del Archivo `conf.txt`
-
-El archivo de configuración refleja de forma transparente la quíntupla formal $A = (Q, \Sigma, f, q_0, F)$:
 
 ```ini
 # Q: Conjunto de estados
