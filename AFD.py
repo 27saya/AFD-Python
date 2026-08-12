@@ -162,7 +162,7 @@ class AutomataFinitoDeterminista:
 
 def main():
     print("=" * 70)
-    print("      SIMULADOR DE AUTÓMATA FINITO DETERMINISTA (AFD)")
+    print("      Simulador de AFD")
     print("         Quíntupla Formal: A = (Q, Σ, f, q0, F)")
     print("=" * 70)
 
