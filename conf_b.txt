@@ -1,0 +1,9 @@
+# Autómata para Ejercicio 3.16 b): (a*|b*)*
+Q: q0
+SIGMA: a, b
+Q0: q0
+F: q0
+
+F_TRANSICION:
+q0, a -> q0
+q0, b -> q0

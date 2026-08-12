@@ -1,0 +1,23 @@
+# ==============================================================================
+# ARCHIVO DE CADENAS DE ENTRADA PARA EL AUTÓMATA FINITO DETERMINISTA
+# Ejercicio 3.16 de Aho (Pág. 149)
+# ==============================================================================
+
+# 1. Cadena principal requerida en el Ejercicio 3.16 de Aho:
+ababbab
+
+# 2. Cadenas de aceptación para el autómata d) (contienen la subcadena 'abb'):
+abb
+aabbab
+babb
+ababbabb
+
+# 3. Cadenas de rechazo para el autómata d) (no contienen 'abb'):
+ab
+baba
+a
+b
+ε
+
+# 4. Cadena con carácter inválido fuera del alfabeto {a, b}:
+ababbx

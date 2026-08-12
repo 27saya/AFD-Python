@@ -1,0 +1,28 @@
+# ARCHIVO DE CONFIGURACIÓN DE AUTÓMATA FINITO DETERMINISTA (AFD)
+# Basado en la Quíntupla Formal: A = (Q, Σ, f, q0, F)
+# Ejercicio 3.16 - Inciso d) del Libro de Aho: (a|b)*abb(a|b)*
+#
+
+# Q: Conjunto de estados del autómata
+Q: q0, q1, q2, q3
+
+# Σ: Alfabeto de entrada
+SIGMA: a, b
+
+# q0: Estado inicial (q0 ∈ Q)
+Q0: q0
+
+# F: Conjunto de estados finales / de aceptación (F ⊆ Q)
+F: q3
+
+# f: Función de transición (Q x Σ -> Q)
+# Formato: origen, simbolo -> destino
+F_TRANSICION:
+q0, a -> q1
+q0, b -> q0
+q1, a -> q1
+q1, b -> q2
+q2, a -> q1
+q2, b -> q3
+q3, a -> q3
+q3, b -> q3
