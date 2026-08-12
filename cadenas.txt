@@ -1,8 +1,3 @@
-# ==============================================================================
-# ARCHIVO DE CADENAS DE ENTRADA PARA EL AUTÓMATA FINITO DETERMINISTA
-# Ejercicio 3.16 de Aho (Pág. 149)
-# ==============================================================================
-
 # 1. Cadena principal requerida en el Ejercicio 3.16 de Aho:
 ababbab
 
