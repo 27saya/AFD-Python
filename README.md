@@ -2,7 +2,7 @@
 
 La tarea consiste en el desarrollo e implementación de un simulador genérico de **Autómatas Finitos Deterministas (AFD)** escrito en Python (`AFD.py`). El simulador permite configurar cualquier autómata mediante un archivo de texto de configuración (`conf.txt`) y evaluar secuencialmente un conjunto de cadenas de entrada provistas en `cadenas.txt`.
 
-Para validar el funcionamiento del autómata, se toman como caso de estudio los modelos del **ejercicio 3.16 (página 149)** del libro *Compiladores: Principios, Técnicas y Herramientas* de Alfred V. Aho, Sethi y Ullman. El programa determina si cada cadena pertenece al lenguaje formal aceptado por el autómata y genera la secuencia completa de movimiento (traza de estados).
+Para validar el funcionamiento del autómata, se toman como caso de estudio los modelos del **ejercicio 3.16 (página 149)** del libro *Compiladores: Principios, Técnicas y Herramientas* de Alfred V. Aho. El programa determina si cada cadena pertenece al lenguaje formal aceptado por el autómata y genera la secuencia completa de movimiento.
 
 ---
 
