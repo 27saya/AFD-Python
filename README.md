@@ -233,7 +233,7 @@ pip install matplotlib networkx
    ```
 6. Genera las gráficas en Linux:
    ```bash
-   python3 generate_diagrams.py
+   python3 generarDiagramas.py
    ```
 
 ---
