@@ -180,11 +180,6 @@ Asegúrate de contar con Python 3 instalado en tu sistema:
 python --version   # O python3 --version
 ```
 
-Para generar las gráficas visuales (opcional), instala las librerías necesarias:
-```bash
-pip install matplotlib networkx
-```
-
 ---
 
 ### 7.2 Ejecución en Windows (PowerShell / CMD)
@@ -192,7 +187,7 @@ pip install matplotlib networkx
 1. Abre la consola de **PowerShell** o **símbolo del sistema (CMD)**.
 2. Navega hasta la carpeta del proyecto:
    ```powershell
-   cd C:\Ruta\A\Tu\Carpeta\AFD-Python
+   cd C:ruta\a\tu\carpeta\AFD-Python
    ```
 3. Ejecuta el autómata pasando los archivos `conf.txt` y `cadenas.txt`:
    ```powershell
@@ -214,7 +209,7 @@ pip install matplotlib networkx
 1. Abre tu terminal.
 2. Clona o navega hasta el directorio del proyecto:
    ```bash
-   cd ~/Ruta/A/Tu/Carpeta/AFD-Python
+   cd ~/ruta/a/tu/carpeta/AFD-Python
    ```
 3. Asegura permisos de ejecución (opcional):
    ```bash
