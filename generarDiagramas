@@ -1,12 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-generate_diagrams.py - Generador de diagramas de estados y gráficas de resultados
-Produce:
-  1. diagrama_afd_ejercicio3_16d.png : Diagrama de transición de estados del AFD
-  2. resultados_ejercicio3_16.png     : Gráfica estadistica del procesamiento de cadenas
-"""
-
 import sys
 import matplotlib.pyplot as plt
 import networkx as nx
