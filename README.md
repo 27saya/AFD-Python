@@ -167,7 +167,6 @@ $$q_0 \xrightarrow{a} q_1 \xrightarrow{b} q_2 \xrightarrow{a} q_1 \xrightarrow{b
 
 ![Gráfica de Resultados](resultados_ejercicio3_16.png)
 * **Explicación de la Gráfica de Resultados**:
-  * **Visualización Dual**: La gráfica combina un diagrama de barras (izquierda) y un gráfico de dona (derecha) para sintetizar el desempeño del simulador sobre el conjunto de cadenas de prueba (`cadenas.txt`).
   * **Cadenas Aceptadas (45.5% / 5 cadenas)**: Representa las cadenas que contienen la subcadena `abb` (incluyendo la cadena principal `ababbab` del Ejercicio 3.16 de Aho).
   * **Cadenas Rechazadas (45.5% / 5 cadenas)**: Corresponde a las cadenas válidas sobre el alfabeto $\{a, b\}$ que finalizan en estados no aceptadores ($q_0, q_1, q_2$) por no incluir `abb`.
   * **Error de Alfabeto (9.1% / 1 cadena)**: Muestra el caso de control donde la cadena contiene un símbolo fuera de $\Sigma$ (ejemplo: `'x'`), validando la tolerancia a fallos del programa.
