@@ -1,24 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-AFD.py - Simulador de Autómata Finito Determinista (AFD)
-Quíntupla del autómata: A = (Q, Σ, f, q0, F)
-
-Donde:
-  Q  : Conjunto de estados.
-  Σ  : Alfabeto de entrada.
-  f  : Función total de transición (Q x Σ -> Q).
-  q0 : Estado inicial (q0 ∈ Q).
-  F  : Conjunto de estados finales o de aceptación (F ⊆ Q).
-
-Uso:
-  python AFD.py conf.txt cadenas.txt
-"""
-
 import sys
 import os
 
-# Asegurar compatibilidad UTF-8 en consolas Windows
+
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 if hasattr(sys.stderr, 'reconfigure'):
@@ -251,10 +236,7 @@ def main():
 
         print("-" * 70)
 
-    # 3. Resumen final
-    print("\n" + "=" * 70)
     print("                        RESUMEN DE EVALUACIÓN")
-    print("=" * 70)
     print(f" Total de cadenas evaluadas: {total}")
     pct_ac = (aceptadas / total * 100) if total > 0 else 0
     pct_re = (rechazadas / total * 100) if total > 0 else 0
