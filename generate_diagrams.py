@@ -87,7 +87,7 @@ def generar_diagrama_afd():
     ax.annotate("", xy=pos['q3'], xytext=pos['q2'],
                 arrowprops=dict(arrowstyle="-|>", color='#4ade80', lw=3.0, mutation_scale=22,
                                 shrinkA=30, shrinkB=35, connectionstyle="arc3,rad=-0.2"))
-    ax.text(5.0, 0.22, 'b (¡Éxito!)', color='#4ade80', fontsize=12, fontweight='bold', ha='center')
+    ax.text(5.0, 0.22, 'b (hecho)', color='#4ade80', fontsize=12, fontweight='bold', ha='center')
 
     # Retroceso q2 -> q1 (a)
     ax.annotate("", xy=pos['q1'], xytext=pos['q2'],
